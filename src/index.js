@@ -28,6 +28,9 @@ $(function() {
           const animal = new Animal(res)
           $tBody.append(animal.render())
         })
+        .catch((res) => {
+          
+        })
 
   })
 
