@@ -3,7 +3,6 @@ $(function() {
   const $form = $('form.ui.form')
   const api = new Api()
 
-
   $form.on('submit', function(ev){
     ev.preventDefault()
 
@@ -25,14 +24,11 @@ $(function() {
       api.createAnimal(data)
         .then(res => {
           console.log('res', res)
-          console.log('in the then')
-          debugger
           const animal = new Animal(res)
           $tBody.append(animal.render())
         })
-        .catch((res) => {
-          console.log('in the catch')
-          debugger
+        .catch((err) => {
+          console.log('in the catch', err)
         })
 
   })

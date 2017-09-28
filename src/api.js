@@ -23,10 +23,15 @@ class Api {
         method: 'POST',
         body: JSON.stringify(body)
       })
-      .catch((res) => {
-        console.log('in the catch')
-        debugger
-      })
+      .then(this.handleErrors)
       .then(res => res.json())
   }
+
+  handleErrors(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response;
+  }
+
 }
