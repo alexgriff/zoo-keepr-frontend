@@ -3,7 +3,7 @@ class Animal {
     this.name = data.name
     this.id = data.id
     this.gender = data.gender
-    this.speciesId = data.species_id
+    this.species = data.species_name
   }
 
   render() {
@@ -11,7 +11,7 @@ class Animal {
     <tr>
       <td>${this.name}</td>
       <td>${this.gender}</td>
-      <td>${this.speciesId}</td>
+      <td>${this.species}</td>
     </tr>
     `
   }

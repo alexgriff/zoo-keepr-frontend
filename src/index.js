@@ -1,41 +1,43 @@
 $(function() {
   const $tBody = $('tbody')
   const $form = $('form.ui.form')
+  const api = new Api()
 
 
   $form.on('submit', function(ev){
     ev.preventDefault()
 
-    const name = $('#animal-name').val()
-    const gender = $('#animal-gender').children('.active').data().value
-    const species = $('#animal-species').val()
+    const $nameInput = $('#animal-name')
+    const name = $nameInput.val()
+    $nameInput.val('')
+
+    const $genderInput = $('#animal-gender')
+    const gender = $genderInput.children('.active').data().value
+    $('.ui.form .ui.dropdown').dropdown('restore defaults');
+
+    const $speciesInput = $('#animal-species')
+    const species = $speciesInput.val()
+    $speciesInput.val('')
 
     const data = {name, gender, species}
 
 
-    fetch(`http://localhost:3000/animals/`,
-      {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify(data)
-      })
-        .then(res => res.json())
+      api.createAnimal(data)
         .then(res => {
-          console.log('res', res);
+          console.log('res', res)
+          console.log('in the then')
+          debugger
           const animal = new Animal(res)
           $tBody.append(animal.render())
         })
         .catch((res) => {
-          
+          console.log('in the catch')
+          debugger
         })
 
   })
 
-  fetch(`http://localhost:3000/animals/`)
-    .then( res => res.json() )
+  api.fetchAnimals()
     .then( res => {
       console.log(res);
       res.forEach((animalData) => {
