@@ -1,9 +1,9 @@
 class Animal {
-  constructor(data){
-    this.name = data.name
-    this.id = data.id
-    this.gender = data.gender
-    this.species = data.species_name
+  constructor(data) {
+    this.name = data.name;
+    this.id = data.id;
+    this.gender = data.gender;
+    this.species = data.species_name;
   }
 
   render() {
@@ -13,6 +13,6 @@ class Animal {
       <td>${this.gender}</td>
       <td>${this.species}</td>
     </tr>
-    `
+    `;
   }
 }
