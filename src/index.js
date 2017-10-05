@@ -1,5 +1,4 @@
 $(function() {
-  console.log('process', process.env)
   const $tBody = $('tbody');
   const $form = $('form.ui.form');
   const api = new Api();
