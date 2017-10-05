@@ -1,13 +1,13 @@
 class Api {
+  constructor() {
+    this.baseUrl = `https://lit-meadow-22208.herokuapp.com`;
+  }
   fetchAnimals() {
-    return this.get(`https://lit-temple-21098.herokuapp.com/api/v1/animals/`);
+    return this.get(`${this.baseUrl}/api/v1/animals/`);
   }
 
   createAnimal(data) {
-    return this.post(
-      `https://lit-temple-21098.herokuapp.com/api/v1/animals/`,
-      data
-    );
+    return this.post(`${this.baseUrl}/api/v1/animals/`, data);
   }
 
   get(url) {
